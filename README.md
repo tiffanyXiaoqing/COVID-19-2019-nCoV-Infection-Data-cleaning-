@@ -1,5 +1,6 @@
 # COVID-19-2019-nCoV-Infection-Data-cleaning-
-针对新冠病毒疫情数据的清洗脚本和清洗后的数据，
+针对新冠病毒疫情数据的清洗脚本和清洗后的数据。
+在原有基础上增加对全世界各国的数据处理。
 
 # 源数据说明
 源数据使用 https://github.com/BlankerL 的 https://github.com/BlankerL/DXY-COVID-19-Data/blob/master/csv/DXYArea.csv
@@ -15,11 +16,12 @@ provinceName | provinceEnglishName | cityName | cityEnglishName | province_confi
 
 原始数据有两个不足
 1. 原始数据每天都会多次抓取数据，同一个地区每天存在多条记录，因为原始统计数据并不是连续时效性的，各地区并不是按小时的时间段发布，因此每天只需要一条数据
-2. 原始数据仅统计省和市的累计数据
+2. 原始数据仅全国内各个城市的数据，而目前国外的形式迫切变化，值得我们分析关注。
 
-针对这两个问题，我做了两个脚本来对数据进行清洗
+针对这两个问题，在原有基础上增加对全世界各国的数据处理
 
 # 脚本说明
+- world_data.py  对于中国，统计每个城市的信息和；对于其他国家，保留各个国家每天最新的一条数据
 - data_step1.py  第一步处理 本脚本将各省市每天的数据进行去重处理，每个省市只保留最新的一条数据 （也可选择保留当天最大数值）
 - data_step2.py  第二步处理 基于data_step1.py的输出文件， 计算每天的新增数据，通过当天数据减去前一天数据的方式，计算出每天新增数据
 
@@ -36,11 +38,9 @@ excel文件，是对数据源使用了透视图并增加了一些图表分析的
 
 
 # 数据下载说明
-由于raw.githubusercontent.com 被DNS污染，部分地区不能下载， 如果你的github的文件下载有问题，试试hosts文件加入如下内容
-
-`199.232.28.133 raw.githubusercontent.com`
-
-2020.2.16 cz
+由于raw.githubusercontent.com 被DNS污染，部分地区不能下载。大家可以试试我的百度云链接，数据更新到5月16号。
+链接：https://pan.baidu.com/s/1QRaTV1OCTDDpLtuZ3JDtBA 
+提取码：u2d1
 
 #  ------ 2020.02.18 22：00 更新脚本和数据 ---------
 

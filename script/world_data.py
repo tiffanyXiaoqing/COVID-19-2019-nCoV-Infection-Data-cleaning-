@@ -8,7 +8,7 @@ from datetime import timedelta
 from datetime import datetime
 
 input_file = "data3.13.csv"  # "t15.csv"
-output_file = "out_country.csv"
+output_file = "nCov_world_0516.csv"
 
 date_start = datetime(2020, 1, 24, 0, 0)
 
@@ -24,7 +24,7 @@ try:
 except:
     dataf = pandas.read_csv(input_file, encoding='gb2312')
 
-#dataf = dataf[98000:98100]   #截取100行测试
+dataf = dataf[98000:98100]   #截取100行测试
 dataf['updateTime'] = pandas.to_datetime(dataf['updateTime'])
 dataf['date'] = dataf['updateTime'].apply(lambda x: x.strftime('%Y-%m-%d'))  #返回以可读字符串表示的当地时间
 dataf['date'] = pandas.to_datetime(dataf['date'])
@@ -79,4 +79,5 @@ for date_t in df_date:
             NewList.append(new)
 
 df = df.append(NewList)
+df = df.dropna()
 df.to_csv(output_file, encoding="utf_8_sig", index=False)  # 为保证excel打开兼容，输出为UTF8带签名格式

@@ -8,11 +8,12 @@
 
 ##### 感谢 BlankerL 的工作
 
-原始数据格式如下
+原始数据格式如下<br/>
 continentName | continentEnglishName | countryName | ountryEnglishName | provinceName | provinceEnglishName | province_zipCode | province_confirmedCount | province_suspectedCount | province_curedCount | province_deadCount | updateTime | cityName | cityEnglishName | city_zipCode | city_confirmedCount | city_suspectedCount | city_curedCount | city_deadCount
-:-: | :-: | :-: | :-: | :-:| :-: | :-: | :-: | :-:| :-: | :-: | :-: | :-:| :-:| :-: | :-: | :-: | :-:
+:-: | :-: | :-: | :-: | :-:| :-: | :-: | :-: | :-:| :-: | :-: | :-: | :-:| :-:| :-: | :-: | :-: | :-: | :-:
 亚洲 | Asia | 中国 | China | 重庆市 | Chongqing | 500000 | 573 | 0 | 328 | 6 | 2020-02-23 07:18:21| 渝中区 | Yuzhong District|500103|20|0|15|0
 欧洲 | Europe | 卢森堡 | Luxembourg | 卢森堡 | Luxembourg | 961004 | 335 | 0 | 0 | 4 | 2020-03-20 12:33:45 | NA | NA | NA | NA | NA | NA | NA
+
 
 针对数据的改进：<br/>
 1.原始数据每天都会多次抓取数据，同一个地区每天存在多条记录，因为原始统计数据并不是连续时效性的，各地区并不是按小时的时间段发布，因此每天只需要一条数据<br/>
@@ -34,7 +35,7 @@ nCov_world_0516 是5月16日全世界的数据。<br/>
 输出数据格式如下
 国家 | 确诊 | 治愈 | 死亡 | 日期
 :-: | :-: | :-: | :-: | :-:
-阿曼 | 19.0 | 2.0 | 0.0 | 2020-03-13
+阿曼 | 19 | 2 | 0 | 2020-03-13
 
 # 数据下载说明
 由于raw.githubusercontent.com 被DNS污染，部分地区不能下载。大家可以试试我的百度云链接，数据更新到5月16号。

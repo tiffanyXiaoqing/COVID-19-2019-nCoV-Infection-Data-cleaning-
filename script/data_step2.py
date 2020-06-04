@@ -12,7 +12,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 
 # 输入输出参数，根据需要设置
-input_file = "out1.csv"
+input_file = "../data/nCov_china_0216.csv"
 output_file = "out_2_23.csv"
 excel_file = "全国疫情数据分析.xlsx"  # "test.xlsx"
 b_export_excel = False
@@ -38,19 +38,18 @@ df_t = dataf['日期']
 df_date = df_t.drop_duplicates()  # 去重 这个返回Series对象
 
 # dataf['新增确诊'] = dataf['确诊']
-dataf.insert(loc=5, column='新增确诊', value=0)
-dataf.insert(loc=6, column='新增治愈', value=0)
-dataf.insert(loc=7, column='新增死亡', value=0)
+#dataf.insert(loc=5, column='新增确诊', value=0)
+#dataf.insert(loc=6, column='新增治愈', value=0)
+#dataf.insert(loc=7, column='新增死亡', value=0)
 
 # df_date = df_date.sort_values(ascending=False)
 min_date = df_date.min()
 cur_date = df_date.max()
-
 df_t = pandas.DataFrame()
 
 step = 0
 print('处理数据... ')
-for index, data in dataf.iterrows():
+for index, data in dataf.iterrows():  #遍历一整行
     data2 = dataf.loc[
             (dataf['省'] == data['省']) & (dataf['市'] == data['市']) & (dataf['日期'] == data['日期'] - timedelta(days=1)),
             :]
@@ -60,6 +59,7 @@ for index, data in dataf.iterrows():
             :]
 
     if data2.shape[0] > 0:
+        print(data2.shape[0])
         dataf.loc[index, '新增确诊'] = data['确诊'] - data2.iloc[0, :]['确诊']
         dataf.loc[index, '新增治愈'] = data['治愈'] - data2.iloc[0, :]['治愈']
         dataf.loc[index, '新增死亡'] = data['死亡'] - data2.iloc[0, :]['死亡']

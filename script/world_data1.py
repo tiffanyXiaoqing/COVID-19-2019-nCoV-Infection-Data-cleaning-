@@ -7,8 +7,8 @@ import pandas
 from datetime import timedelta
 from datetime import datetime
 
-input_file = "data3.13.csv"  # "data3.13.csv"
-output_file = "testOut2.csv"
+input_file = "data6.3.csv"  # "data3.13.csv"
+output_file = "testOut.csv"
 
 date_start = datetime(2020, 1, 24, 0, 0)
 
@@ -93,5 +93,5 @@ for date_t in df_date:
             NewList.append(new)
 
 df = df.append(NewList)
-df = df.dropna()
+#df = df.dropna()
 df.to_csv(output_file, encoding="utf_8_sig", index=False)  # 为保证excel打开兼容，输出为UTF8带签名格式

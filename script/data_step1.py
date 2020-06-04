@@ -40,7 +40,7 @@ dataf['updateTime'] = pandas.to_datetime(dataf['updateTime'])
 #        dataf.loc[index, 'updateTime'] += timedelta(hours=3)
 dataf['updateTime'] = dataf['updateTime'] + timedelta(hours=3)
 
-dataf['date'] = dataf['updateTime'].apply(lambda x: x.strftime('%Y-%m-%d'))
+dataf['date'] = dataf['updateTime'].apply(lambda x: x.strftime('%Y-%m-%d'))  #返回以可读字符串表示的当地时间
 dataf['date'] = pandas.to_datetime(dataf['date'])
 # print(type(dataf))  print(dataf.dtypes)   print(dataf.head())
 
